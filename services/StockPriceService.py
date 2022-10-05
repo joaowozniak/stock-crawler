@@ -1,3 +1,4 @@
+from math import inf
 from utils.Utils import Utils
 from utils.Constants import Constants
 from models.Quote import Quote
@@ -7,7 +8,7 @@ class StockPriceService:
 
     def get_most_volatile_stock(self, stocks: list) -> Quote:
         print("Requesting stock prices...")
-        most_volatile_stock = Quote("", 0, 0, 0, 0, 0, 0, 0)
+        most_volatile_stock = Quote("", 0, -inf, -inf, 0, 0, 0, 0)
         for stock in stocks:
             current_stock = self.__get_latest_price(stock)
             print("Stock price of: ", stock, " - ", current_stock.pc_change)
