@@ -1,0 +1,33 @@
+2. Find all customers in Berlin
+
+select * from customers where city = 'Berlin';
+
+3. Find all customers in Mexico City
+
+select * from customers where city = 'México D.F.';
+
+4. Find avg price of all products
+
+select avg(price) from products;
+
+5. Find number of products that Have price = 18
+
+select count(*) from products where price=18;
+
+6. Find orders between 1996-08-01 and 1996-09-06
+
+select * from orders where orderdate between 1996-08-01 and 1996-09-07;
+
+7. Find customers with more than 3 orders
+
+select customers.customerID,count(orderid) from customers
+left join orders on customers.customerid=orders.Customerid
+group by customers.customerid
+having count(orderid) > 3
+
+8. Find all customers that are from the same city
+
+select * from customers where city in
+(select city from customers group by city having count(*)>1)
+order by city asc;
+
